@@ -82,10 +82,10 @@
       messageStyle: 'none'
     };
   </script>
-  {{ if .Site.Params.mathjaxUseLocalFiles -}}
-    <script type="text/javascript" async src="{{ "lib/mathjax/MathJax.js?config=TeX-MML-AM_CHTML" | relURL }}"></script>
+  {{ if .Site.Params.publicCDN.enable -}}
+    {{ .Site.Params.publicCDN.mathjax | safeHTML }}
   {{- else -}}
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="{{ "lib/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" | relURL }}"></script>
   {{- end }}
 {{- end }}
 
